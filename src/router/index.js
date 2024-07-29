@@ -1,14 +1,13 @@
-
-/**
- * router/index.ts
- *
- * Automatic routes for `./src/pages/*.vue`
- */
-
-// Composables
 import { createRouter, createWebHistory } from 'vue-router'
-// import { routes } from 'vue-router/auto-routes'
+
+// Create your Client-Side Routing here
 const routes = [
+  {
+    path: '/',
+    redirect: {
+        name: 'Home',
+    }
+},
   {
     path: '/home',
     name: 'Home',
@@ -25,4 +24,17 @@ const router = createRouter({
   routes,
 })
 
+// User Auth Middleware
+router.beforeEach((to, from, next) => {
+  const requiresUserAuth = to.matched.some(record => record.meta.requiresUserAuth);
+  const user = to.matched.some(record => record.meta.user);
+  const isUserLoggedIn = localStorage.getItem('userToken');
+  if (requiresUserAuth && !isUserLoggedIn) {
+      next({ name: 'Login' });
+  } else if (user && isUserLoggedIn) {
+      next({ name: 'Home' });
+  } else {
+      next();
+  }
+});
 export default router
