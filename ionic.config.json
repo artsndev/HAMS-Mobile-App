@@ -1,0 +1,7 @@
+{
+  "name": "HAMS-Mobile-App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
