@@ -11,9 +11,19 @@ import 'vuetify/styles'
 // Composables
 import { createVuetify } from 'vuetify'
 
+const customTheme = {
+  colors: {
+    background: '#ECEFF1',
+    primary: '#2196F3',
+  }
+}
+
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
   theme: {
-    defaultTheme: 'dark',
+    defaultTheme: 'customTheme',
+    themes: {
+      customTheme,
+    }
   },
 })
