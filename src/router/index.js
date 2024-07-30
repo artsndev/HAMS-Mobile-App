@@ -17,6 +17,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: () => import('../components/Profile.vue'),
+  },
+  {
+    path: '/session',
+    name: 'Session',
+    component: () => import('../components/Session.vue'),
   }
 ]
 const router = createRouter({

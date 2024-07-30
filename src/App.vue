@@ -7,5 +7,21 @@
 </template>
 
 <script setup>
-  //
+import { onMounted, onUnmounted } from 'vue';
+
+onMounted(() => {
+  let elHtml = document.getElementsByTagName('html')[0];
+  elHtml.style.overflowY = 'hidden';
+})
+onUnmounted(() => {
+  let elHtml = document.getElementsByTagName('html')[0];
+  elHtml.style.overflowY = null;
+})
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+* {
+  font-family: 'Poppins', sans-serif;
+}
+</style>
