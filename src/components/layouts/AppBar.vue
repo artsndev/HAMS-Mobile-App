@@ -5,10 +5,10 @@
     <v-container>
       <v-text-field variant="outlined" @focus="onFocus" bg-color="blue-grey-lighten-5" placeholder="Search in appointments" color="blue-darken-4" density="comfortable" class="mt-5" rounded>
       <template v-slot:prepend-inner>
-        <v-app-bar-nav-icon size="35"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon size="30" @touchstart.prevent="toggleMenu" @mousedown.prevent="toggleMenu" @click.stop="toggleMenu"></v-app-bar-nav-icon>
       </template>
       <template v-slot:append-inner>
-        <v-avatar size="35" @touchstart.prevent="toggleDialog" @mousedown.prevent="toggleDialog">
+        <v-avatar size="30" @touchstart.prevent="toggleDialog" @mousedown.prevent="toggleDialog">
           <img src="@/assets/images/avatar.jpg" alt="Avatar" style="object-fit: cover; width: 100%; height: 100%;">
           <v-dialog v-model="dialog" persistent activator="parent" width="500px" >
             <v-card style="border-radius: 30px; background-color: #EEEEEE;" >
@@ -45,6 +45,19 @@
     </v-text-field>
     </v-container>
   </v-app-bar>
+  <v-navigation-drawer v-model="drawer" dark border="0" active>
+    <v-list density="compact" nav class="mt-5">
+        <v-list-subheader class="text-uppercase font-weight-black text-caption">Menu</v-list-subheader>
+        <v-list-item v-for="(item, i) in navDrawitems" :key="i" :value="item" class="fs-5">
+            <template v-slot:prepend>
+                <v-icon :icon="item.icon" size="33"></v-icon>
+            </template>
+            <router-link :to="{ name: item.routeName }" class="text-decoration-none text-dark">
+                <v-list-item-title v-text="item.text" class="text-decoration-none text-dark"></v-list-item-title>
+            </router-link>
+        </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script setup>
@@ -62,6 +75,19 @@ const handleItemClick = (item) => {
     logout();
   }
 }
+
+const drawer = ref(false);
+const toggleMenu = () => {
+  drawer.value = !drawer.value;
+}
+
+const navDrawitems = ref([
+    { icon: 'mdi-account-outline', text: 'Profile', },
+    { icon: 'mdi-clipboard-text-multiple-outline', text: 'Appointments',},
+    { icon: 'mdi-calendar-multiple', text: 'Schedule',},
+    { icon: 'mdi-account-multiple-outline', text: 'Patients',},
+]);
+
 
 const dialog = ref(false)
 
