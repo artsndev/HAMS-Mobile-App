@@ -13,18 +13,18 @@
           <v-dialog v-model="dialog" persistent activator="parent" width="500px" >
             <v-card style="border-radius: 30px; background-color: #EEEEEE;" >
               <v-toolbar density="compact">
-                <v-toolbar-title class="text-center font-weight-medium ms-10" style="font-size: medium;">{{ email }}</v-toolbar-title>
+                <v-toolbar-title class="text-center font-weight-medium ms-10" style="font-size: medium;">alfhaigarusman@gmailcom</v-toolbar-title>
                 <v-btn icon="mdi-close" dark  @click="dialog = false" density="compact"></v-btn>
               </v-toolbar>
               <v-avatar size="100" class="mx-auto">
                 <img src="@/assets/images/avatar.jpg" alt="Avatar" style="object-fit: cover; width: 100%; height: 100%;">
               </v-avatar>
-              <h2 class="mx-auto font-weight-regular">Hi, {{ name }}!</h2>
+              <h2 class="mx-auto font-weight-regular">Hi, Al-Fhaigar Usman!</h2>
               <v-btn class="mb-4 mx-auto" rounded color="primary" variant="outlined">Manage your Account</v-btn>
               <v-container>
                 <v-card style="border-radius: 25px;">
                   <v-list>
-                    <v-list-item prepend-avatar="@/assets/images/avatar.jpg" :title="name" :subtitle="email">
+                    <v-list-item prepend-avatar="@/assets/images/avatar.jpg" title="Al-Fhaigar Usman" subtitle="alfhaigarusman@gmailcom">
                     </v-list-item>
                   </v-list>
                   <v-divider></v-divider>
@@ -46,17 +46,33 @@
     </v-container>
   </v-app-bar>
   <v-navigation-drawer v-model="drawer" dark border="0" active>
-    <v-list density="compact" nav class="mt-5">
-        <v-list-subheader class="text-uppercase font-weight-black text-caption">Menu</v-list-subheader>
+    <div class="text-center mt-3">
+      <v-avatar size="70" class="mx-auto">
+        <img src="@/assets/images/avatar.jpg" alt="Avatar" style="object-fit: cover; width: 100%; height: 100%;">
+      </v-avatar>
+      <v-list>
+        <v-list-item subtitle="alfhaigarusman@gmailcom" title="Al-Fhaigar Usman"></v-list-item>
+      </v-list>
+    </div>
+    <v-list density="compact" nav class="mt-3">
+      <v-divider class="mb-5"></v-divider>
+      <!-- <v-list-subheader class="text-uppercase font-weight-black text-caption">Menu</v-list-subheader> -->
         <v-list-item v-for="(item, i) in navDrawitems" :key="i" :value="item" class="fs-5">
             <template v-slot:prepend>
                 <v-icon :icon="item.icon" size="33"></v-icon>
             </template>
-            <router-link :to="{ name: item.routeName }" class="text-decoration-none text-dark">
+            <router-link :to="{ name: item.routeName }" class="text-decoration-none text-dark ">
                 <v-list-item-title v-text="item.text" class="text-decoration-none text-dark"></v-list-item-title>
             </router-link>
         </v-list-item>
+        <v-divider class="mt-5"></v-divider>
     </v-list>
+    <template v-slot:append>
+      <div class="text-center mb-2">
+        <p class="text-grey fs-14">@QuirkyQuarks Squadrons</p>
+        <p class="text-grey mb-2 fs-14">© 2024 All rights reserved.</p>
+      </div>
+    </template>
   </v-navigation-drawer>
 </template>
 
@@ -82,10 +98,11 @@ const toggleMenu = () => {
 }
 
 const navDrawitems = ref([
-    { icon: 'mdi-account-outline', text: 'Profile', },
-    { icon: 'mdi-clipboard-text-multiple-outline', text: 'Appointments',},
-    { icon: 'mdi-calendar-multiple', text: 'Schedule',},
-    { icon: 'mdi-account-multiple-outline', text: 'Patients',},
+  { icon: 'mdi-home-variant-outline', text: 'Home', routeName: 'Home' },
+  { icon: 'mdi-account-outline', text: 'Profile', routeName: 'Profile' },
+  { icon: 'mdi-message-text-outline', text: 'Session', routeName: 'Session'},
+  { icon: 'mdi-bullhorn-variant-outline', text: 'Announcement',},
+  { icon: 'mdi-cog-outline', text: 'Settings',},
 ]);
 
 
@@ -147,3 +164,9 @@ onMounted(() => {
   loadUser()
 })
 </script>
+
+<style>
+.fs-14{
+    font-size: 12px;
+}
+</style>
