@@ -61,8 +61,8 @@
             <template v-slot:prepend>
                 <v-icon :icon="item.icon" size="33"></v-icon>
             </template>
-            <router-link :to="{ name: item.routeName }" class="text-decoration-none text-dark ">
-                <v-list-item-title v-text="item.text" class="text-decoration-none text-dark"></v-list-item-title>
+            <router-link :to="{ name: item.routeName }" class="text-dark text-decoration-none">
+                <v-list-item-title v-text="item.text"></v-list-item-title>
             </router-link>
         </v-list-item>
         <v-divider class="mt-5"></v-divider>

@@ -15,6 +15,7 @@ const customTheme = {
   colors: {
     // background: '#ECEFF1',
     primary: '#2196F3',
+    dark: '#212121'
   }
 }
 
