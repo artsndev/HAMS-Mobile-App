@@ -5,7 +5,7 @@
     <v-container>
       <v-text-field variant="outlined" @focus="onFocus" bg-color="blue-grey-lighten-5" placeholder="Search in appointments" color="blue-darken-4" density="comfortable" class="mt-5" rounded>
       <template v-slot:prepend-inner>
-        <v-app-bar-nav-icon size="30" @touchstart.prevent="toggleMenu" @mousedown.prevent="toggleMenu" @click.stop="toggleMenu"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon size="30" :ripple="false" @touchstart.prevent="toggleMenu" @mousedown.prevent="toggleMenu" @click="toggleMenu"></v-app-bar-nav-icon>
       </template>
       <template v-slot:append-inner>
         <v-avatar size="30" @touchstart.prevent="toggleDialog" @mousedown.prevent="toggleDialog">
@@ -45,7 +45,7 @@
     </v-text-field>
     </v-container>
   </v-app-bar>
-  <v-navigation-drawer v-model="drawer" dark border="0" active>
+  <v-navigation-drawer v-model="drawer" fla>
     <div class="text-center mt-3">
       <v-avatar size="70" class="mx-auto">
         <img src="@/assets/images/avatar.jpg" alt="Avatar" style="object-fit: cover; width: 100%; height: 100%;">
@@ -56,7 +56,6 @@
     </div>
     <v-list density="compact" nav class="mt-3">
       <v-divider class="mb-5"></v-divider>
-      <!-- <v-list-subheader class="text-uppercase font-weight-black text-caption">Menu</v-list-subheader> -->
         <v-list-item v-for="(item, i) in navDrawitems" :key="i" :value="item" class="fs-5">
             <template v-slot:prepend>
                 <v-icon :icon="item.icon" size="33"></v-icon>
