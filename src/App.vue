@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="scrollable-section">
     <v-main>
       <router-view />
     </v-main>
@@ -8,6 +8,10 @@
 
 <script setup>
 import { onMounted, onUnmounted } from 'vue';
+import useStatusBar from './composables/statusbar';
+
+// eslint-disable-next-line no-unused-vars
+const { setStatusBarTransparent } = useStatusBar();
 
 onMounted(() => {
   let elHtml = document.getElementsByTagName('html')[0];

@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <AppBar/>
-  <v-list :items="items" lines="two" item-props>
-      <template v-slot:subtitle="{ subtitle }">
+    <v-list :items="items" lines="two" item-props class="mt-n3">
+      <template v-slot:subtitle="{ subtitle }" >
         <div v-html="subtitle"></div>
       </template>
     </v-list>

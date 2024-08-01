@@ -3,12 +3,12 @@
 <template>
   <v-app-bar flat>
     <v-container>
-      <v-text-field variant="outlined" bg-color="blue-grey-lighten-5" placeholder="Search in appointments" color="blue-darken-4" density="comfortable" class="mt-5" rounded>
+      <v-text-field variant="outlined" @focus="onFocus" bg-color="blue-grey-lighten-5" placeholder="Search in appointments" color="blue-darken-4" density="comfortable" class="mt-5" rounded>
       <template v-slot:prepend-inner>
         <v-app-bar-nav-icon size="35"></v-app-bar-nav-icon>
       </template>
       <template v-slot:append-inner>
-        <v-avatar size="35">
+        <v-avatar size="35" @touchstart.prevent="toggleDialog" @mousedown.prevent="toggleDialog">
           <img src="@/assets/images/avatar.jpg" alt="Avatar" style="object-fit: cover; width: 100%; height: 100%;">
           <v-dialog v-model="dialog" persistent activator="parent" width="500px" >
             <v-card style="border-radius: 30px; background-color: #EEEEEE;" >
@@ -104,6 +104,18 @@ const logout = async () => {
     console.log(error)
   }
 }
+
+const toggleDialog = () => {
+  dialog.value = !dialog.value;
+};
+
+const onFocus = (event) => {
+  if (dialog.value) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.target) event.target.blur();
+  }
+};
 
 onMounted(() => {
   loadUser()
