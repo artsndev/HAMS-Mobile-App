@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/valid-template-root -->
 <template>
-  <v-bottom-navigation  :elevation="3" v-model="value"  mode="shift" horizontal grow color="blue-darken-3">
+  <v-bottom-navigation bg-color="blue-grey-lighten-5" :elevation="0" v-model="value"  mode="shift" horizontal grow color="blue-darken-1">
     <v-btn  v-for="(item, index) in items" :key="index" :to="{ name: item.routeName }">
       <v-icon size="28">{{ item.icon }}</v-icon>
       <span>{{ item.title }}</span>

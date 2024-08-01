@@ -24,4 +24,8 @@ onUnmounted(() => {
 * {
   font-family: 'Poppins', sans-serif;
 }
+.scrollable-section {
+    overflow-y: auto;
+    max-height: 100vh;
+}
 </style>

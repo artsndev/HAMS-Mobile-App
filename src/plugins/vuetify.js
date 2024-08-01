@@ -13,7 +13,7 @@ import { createVuetify } from 'vuetify'
 
 const customTheme = {
   colors: {
-    background: '#ECEFF1',
+    // background: '#ECEFF1',
     primary: '#2196F3',
   }
 }
