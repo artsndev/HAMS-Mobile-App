@@ -99,8 +99,9 @@ const toggleMenu = () => {
 const navDrawitems = ref([
   // { icon: 'mdi-home-variant-outline', text: 'Home', routeName: 'Home' },
   { icon: 'mdi-account-outline', text: 'Profile', routeName: 'Profile' },
-  { icon: 'mdi-message-text-outline', text: 'Session', routeName: 'Session'},
   { icon: 'mdi-bullhorn-variant-outline', text: 'Announcement', routeName: 'Announcement'},
+  { icon: 'mdi-doctor', text: 'Doctor', routeName: 'Doctor'},
+  { icon: 'mdi-message-text-outline', text: 'Session', routeName: 'Session'},
   { icon: 'mdi-cog-outline', text: 'Settings',},
 ]);
 
