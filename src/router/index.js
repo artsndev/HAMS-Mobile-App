@@ -27,6 +27,11 @@ const routes = [
     path: '/session',
     name: 'Session',
     component: () => import('../components/Session.vue'),
+  },
+  {
+    path: '/announcement',
+    name: 'Announcement',
+    component: () => import('../components/Announcement.vue'),
   }
 ]
 const router = createRouter({
