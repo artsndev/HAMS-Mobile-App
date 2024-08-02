@@ -27,6 +27,21 @@ const routes = [
     path: '/session',
     name: 'Session',
     component: () => import('../components/Session.vue'),
+  },
+  {
+    path: '/announcement',
+    name: 'Announcement',
+    component: () => import('../components/Announcement.vue'),
+  },
+  {
+    path: '/doctor',
+    name: 'Doctor',
+    component: () => import('../components/Doctor.vue'),
+  },
+  {
+    path: '/doctor/profile',
+    name: 'Doctor Profile',
+    component: () => import('../components/DoctorProfile.vue'),
   }
 ]
 const router = createRouter({
