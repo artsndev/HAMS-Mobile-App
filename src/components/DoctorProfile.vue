@@ -61,9 +61,10 @@
           <span class="mx-2">(+63) 995 8111 348</span>
         </v-list-item-title>
       </v-list-item>
-      <v-btn block color="blue-darken-4" rounded="lg">Request For Appointment</v-btn>
     </v-list>
-
+    <v-footer class="mt-16">
+        <v-btn block color="blue-darken-4 mt-16" rounded="lg">Request For Appointment</v-btn>
+      </v-footer>
 </template>
 
 <script setup>
