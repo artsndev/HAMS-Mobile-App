@@ -5,6 +5,14 @@
       <template v-slot:subtitle="{ subtitle }" >
         <div v-html="subtitle"></div>
       </template>
+      <template v-slot:append>
+        <span class="small">Hello</span>
+          <v-btn class="mb-n6"
+            color="grey-lighten-1"
+            icon="mdi-information"
+            variant="text"
+          ></v-btn>
+        </template>
     </v-list>
   <BottomBar/>
 </template>
@@ -15,7 +23,7 @@ import BottomBar from './layouts/BottomBar.vue';
 import { ref } from 'vue'
 
 const items = ref([
-  { type: 'subheader', title: 'Today' },
+  { type: 'subheader', title: 'Session' },
   {
     prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
     title: 'Test 1',
