@@ -11,42 +11,66 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../components/auth/Login.vue')
+    component: () => import('../components/auth/Login.vue'),
+    meta: {
+      user: true,
+    }
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import('../components/auth/Register.vue')
+    component: () => import('../components/auth/Register.vue'),
+    meta: {
+      user: true,
+    }
   },
   {
     path: '/home',
     name: 'Home',
     component: () => import('../components/Home.vue'),
+    meta: {
+      requiresUserAuth: true,
+    }
   },
   {
     path: '/profile',
     name: 'Profile',
     component: () => import('../components/Profile.vue'),
+    meta: {
+      requiresUserAuth: true,
+    }
   },
   {
     path: '/session',
     name: 'Session',
     component: () => import('../components/Session.vue'),
+    meta: {
+      requiresUserAuth: true,
+    }
   },
   {
     path: '/announcement',
     name: 'Announcement',
     component: () => import('../components/Announcement.vue'),
+    meta: {
+      requiresUserAuth: true,
+    }
   },
   {
     path: '/doctor',
     name: 'Doctor',
     component: () => import('../components/Doctor.vue'),
+    meta: {
+      requiresUserAuth: true,
+    }
   },
   {
     path: '/doctor/profile',
     name: 'Doctor Profile',
     component: () => import('../components/DoctorProfile.vue'),
+    meta: {
+      requiresUserAuth: true,
+    }
   }
 ]
 const router = createRouter({
