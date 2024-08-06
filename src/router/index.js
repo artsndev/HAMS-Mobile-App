@@ -65,7 +65,7 @@ const routes = [
     }
   },
   {
-    path: '/doctor/profile',
+    path: '/doctor/profile/:id',
     name: 'Doctor Profile',
     component: () => import('../components/DoctorProfile.vue'),
     meta: {
