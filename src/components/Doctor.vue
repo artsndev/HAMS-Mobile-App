@@ -1,5 +1,4 @@
 <!-- eslint-disable vue/multi-word-component-names -->
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <AppBar/>
     <v-list :items="items" lines="two" item-props class="mt-n3">
@@ -25,58 +24,13 @@ const items = ref([
     subtitle: 'January 07, 2024',
   },
   { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-    title: 'Test Doctor Name 2',
-    subtitle: 'January 07, 2024',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-    title: 'Test Doctor Name 3',
-    subtitle: 'January 07, 2024',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-    title: 'Test Doctor Name 4',
-    subtitle: 'January 07, 2024',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-    title: 'Test Doctor Name 5',
-    subtitle: 'January 07, 2024',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-    title: 'Test Doctor Name 6',
-    subtitle: 'January 07, 2024',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-    title: 'Test Doctor Name 7',
-    subtitle: 'January 07, 2024',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-    title: 'Test Doctor Name 8',
-    subtitle: 'January 07, 2024',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-    title: 'Test Doctor Name 9',
-    subtitle: 'January 07, 2024',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-    title: 'Test Doctor Name 10',
-    subtitle: 'January 07, 2024',
-  },
 ])
+
+// const fetchData = async () => {
+//   try {
+//     const token = localStorage.getItem('userToken')
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
 </script>
