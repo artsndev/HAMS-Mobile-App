@@ -1,36 +1,60 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <AppBar/>
-    <v-list :items="items" lines="two" item-props class="mt-n3">
-        <template v-slot:subtitle="{ subtitle }" >
-        <router-link to="/doctor/profile" class="text-decoration-none text-dark">
-          <div v-html="subtitle"></div>
-        </router-link>
-      </template>
-    </v-list>
-  <BottomBar/>
+  <AppBar />
+  <v-list :items="items" lines="two" item-props class="mt-n3">
+    <template v-slot:subtitle="{ subtitle, item }">
+      <router-link :to="'/doctor/profile/' + item.id" class="text-decoration-none text-dark">
+        <div v-html="subtitle"></div>
+      </router-link>
+    </template>
+  </v-list>
+  <BottomBar />
 </template>
 
 <script setup>
+import axios from 'axios';
 import AppBar from './layouts/AppBar.vue';
 import BottomBar from './layouts/BottomBar.vue';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue';
+import { BASE_URL } from '@/web';
+import avatar from '@/assets/images/avatar.png'
 
 const items = ref([
   { type: 'subheader', title: 'Doctor' },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-    title: 'Test Doctor Name 1',
-    subtitle: 'January 07, 2024',
-  },
-  { type: 'divider', inset: true },
-])
+]);
 
-// const fetchData = async () => {
-//   try {
-//     const token = localStorage.getItem('userToken')
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+const fetchData = async () => {
+  try {
+    const token = localStorage.getItem('userToken');
+    const response = await axios.get( BASE_URL + '/doctor', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    // Assuming the response contains an array of doctors
+    const doctors = response.data.data;
+
+    // Clear the current items except the subheader
+    items.value = [{ type: 'subheader', title: 'Doctor' }];
+
+    // Push new items based on fetched data
+    doctors.forEach((doctor) => {
+      items.value.push({
+        id: doctor.id,
+        prependAvatar: doctor.avatarUrl || avatar,
+        title: doctor.name,
+        subtitle: doctor.specialization,
+      });
+      items.value.push({ type: 'divider', inset: true });
+    });
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+onMounted(() => {
+  fetchData();
+});
 </script>

@@ -127,8 +127,11 @@ const loadUser = async () => {
     if (error.response.status === 401) {
       localStorage.removeItem('userToken');
       setTimeout(() => {
-        location.reload();
-      }, 3000);
+        location.reload()
+        router.push({
+          name: 'Login'
+        })
+      }, 3000)
     }
   }
 }
