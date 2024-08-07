@@ -50,7 +50,7 @@
       </v-list-item>
     </v-list>
     <v-footer class="position-bottom">
-      <v-dialog transition="dialog-bottom-transition" fullscreen>
+      <v-dialog v-model="addAppointment" transition="dialog-bottom-transition" fullscreen>
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn block v-bind="activatorProps" color="blue-darken-4 sticky-bottom" rounded="lg">Request For Appointment</v-btn>
         </template>
@@ -83,6 +83,10 @@
         </template>
       </v-dialog>
     </v-footer>
+    <v-snackbar :timeout="2000" v-model="snackbar" color="success">
+    <v-icon icon="mdi-check" class="px-2"></v-icon>
+      {{ text }}
+  </v-snackbar>
 </template>
 
 <script setup>
@@ -152,6 +156,15 @@ const form = reactive({
 })
 const items = ref(['Website', 'Web Application', 'Mobile App', 'Web Design', 'Cloud Hosting', 'API Development']);
 
+const text = ref('Submitted Successfully!')
+
+const initialFormState = {
+  doctor_id: doctorId,
+  appointment_time: null,
+  purpose_of_appointment: '',
+  session_of_appointment: [],
+};
+
 const formattedDate = (date) => {
     if (!date) return '';
     const d = new Date(date);
@@ -172,6 +185,9 @@ const appointment_error = ref('')
 const appointment_session_error = ref('')
 const appointment_purpose_error = ref('')
 
+const addAppointment = ref(false)
+
+const snackbar = ref(false)
 const error = ref('')
 const timer = ref(null)
 
@@ -221,8 +237,10 @@ const createAppointment = async () => {
       }, 10000);
     }
     if(response.data.success){
-      loadUser()
+      snackbar.value = true
+      addAppointment.value = false
       scheduleItem.value = scheduleItem.value.filter(time => time !== formatDate(form.appointment_time));
+      Object.assign(form.value, initialFormState);
     } else {
       if (response.data.errors) {
         setValidationError();
