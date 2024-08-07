@@ -37,12 +37,12 @@
           <span class="mx-2">{{ birthdate }}</span>
         </v-list-item-title>
         <v-list-item-title class="font-weight-medium fs-10 mb-2">
-          <v-icon>mdi-map-marker-radius-outline</v-icon>
-          <span class="mx-2 text-wrap mb-2">{{ address }}</span>
-        </v-list-item-title>
-        <v-list-item-title class="font-weight-medium fs-10 mb-2">
           <v-icon>mdi-phone-outline</v-icon>
           <span class="mx-2">{{ phone_number }}</span>
+        </v-list-item-title>
+        <v-list-item-title class="font-weight-medium fs-10 mb-2">
+          <v-icon>mdi-map-marker-radius-outline</v-icon>
+          <span class="mx-2 text-wrap mb-2">{{ address }}</span>
         </v-list-item-title>
       </v-list-item>
     </v-list>
@@ -75,7 +75,7 @@ const loadUser = async () => {
     email.value = response.data.email
     address.value = response.data.address
     birthdate.value = response.data.birthdate
-    phone_number.value = response.data.email
+    phone_number.value = response.data.phone_number
   } catch (error) {
     if (error.response.status === 401) {
       localStorage.removeItem('userToken');
