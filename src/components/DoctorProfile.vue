@@ -197,7 +197,7 @@ const createAppointment = async () => {
     formData.append('doctor_id', form.doctor_id);
     formData.append('appointment_time', formattedDate(form.appointment_time));
     formData.append('purpose_of_appointment', form.purpose_of_appointment);
-    formData.append('session_of_appointment', form.session_of_appointment.join(','));
+    formData.append('session_of_appointment', form.session_of_appointment.join(', '));
     const token = localStorage.getItem('userToken')
     const response = await axios.post(BASE_URL + '/appointment/', formData, {
       headers : {
