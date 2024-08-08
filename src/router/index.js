@@ -49,6 +49,14 @@ const routes = [
     }
   },
   {
+    path: '/session/info/:id',
+    name: 'Session Info',
+    component: () => import('../components/SessionInfo.vue'),
+    meta: {
+      requiresUserAuth: true,
+    }
+  },
+  {
     path: '/announcement',
     name: 'Announcement',
     component: () => import('../components/Announcement.vue'),
@@ -71,7 +79,7 @@ const routes = [
     meta: {
       requiresUserAuth: true,
     }
-  }
+  },
 ]
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
