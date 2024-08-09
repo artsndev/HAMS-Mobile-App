@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <v-app-bar flat>
@@ -7,23 +8,24 @@
           <v-app-bar-nav-icon size="30" :ripple="false" @touchstart.prevent="toggleMenu" @mousedown.prevent="toggleMenu" @click="toggleMenu"></v-app-bar-nav-icon>
         </template>
         <template v-slot:append-inner>
-          <v-avatar size="30" @touchstart.prevent="toggleDialog" @mousedown.prevent="toggleDialog" >
-            <img src="@/assets/images/avatar.png" alt="Avatar" style="object-fit: cover; width: 100%; height: 100%;"/>
+          <v-avatar size="30" @touchstart.prevent="toggleDialog" @mousedown.prevent="toggleDialog">
+            <img src="@/assets/images/avatar.png" alt="Avatar" style="object-fit: cover; width: 100%; height: 100%;">
             <v-dialog v-model="dialog" persistent activator="parent" width="500px" >
-              <v-card style="border-radius: 30px; background-color: #EEEEEE;">
+              <v-card style="border-radius: 30px; background-color: #EEEEEE;" >
                 <v-toolbar density="compact">
-                  <v-toolbar-title class="text-center font-weight-medium ms-10" style="font-size: medium;" >{{ email }}</v-toolbar-title>
-                  <v-btn icon="mdi-close" dark @click="dialog = false" density="compact" ></v-btn>
+                  <v-toolbar-title class="text-center font-weight-medium ms-10" style="font-size: medium;">{{ email }}</v-toolbar-title>
+                  <v-btn icon="mdi-close" dark  @click="dialog = false" density="compact"></v-btn>
                 </v-toolbar>
                 <v-avatar size="100" class="mx-auto">
-                  <img src="@/assets/images/avatar.png" alt="Avatar" style="object-fit: cover; width: 100%; height: 100%;"/>
+                  <img src="@/assets/images/avatar.png" alt="Avatar" style="object-fit: cover; width: 100%; height: 100%;">
                 </v-avatar>
                 <h2 class="mx-auto font-weight-regular">Hi, {{ name }}!</h2>
-                <v-btn class="mb-4 mx-auto" rounded color="primary" variant="outlined" >Manage your Account</v-btn>
+                <v-btn class="mb-4 mx-auto" rounded color="primary" variant="outlined">Manage your Account</v-btn>
                 <v-container>
                   <v-card style="border-radius: 25px;">
                     <v-list>
-                      <v-list-item prepend-avatar="@/assets/images/avatar.png" :title="name" :subtitle="email"></v-list-item>
+                      <v-list-item prepend-avatar="@/assets/images/avatar.png" :title="name" :subtitle="email">
+                      </v-list-item>
                     </v-list>
                     <v-divider></v-divider>
                     <v-list :lines="false" nav>
@@ -31,7 +33,7 @@
                         <template v-slot:prepend>
                           <v-icon :icon="item.icon"></v-icon>
                         </template>
-                        <v-list-item-title :text="item.text" style="font-size: medium;" ></v-list-item-title>
+                        <v-list-item-title v-text="item.text" style="font-size: medium;"></v-list-item-title>
                       </v-list-item>
                     </v-list>
                   </v-card>
@@ -60,15 +62,15 @@
           <v-icon :icon="item.icon" size="33"></v-icon>
         </template>
         <router-link :to="{ name: item.routeName }" class="text-dark text-decoration-none">
-          <v-list-item-title :text="item.text"></v-list-item-title>
+          <v-list-item-title v-text="item.text"></v-list-item-title>
         </router-link>
       </v-list-item>
       <v-divider class="mt-5"></v-divider>
     </v-list>
     <template v-slot:append>
       <div class="text-center mb-2">
-        <p class="text-grey fs-14">@QuirkyQuarks Squadrons</p>
-        <p class="text-grey mb-2 fs-14">© 2024 All rights reserved.</p>
+        <p class="text-grey fs-12">@QuirkyQuarks Squadrons</p>
+        <p class="text-grey mb-2 fs-12">© 2024 All rights reserved.</p>
       </div>
     </template>
   </v-navigation-drawer>
@@ -81,8 +83,8 @@
     </template>
     <template v-slot:append="{ item }">
       <div class="flex">
-        <p class="ms-5 text-disabled fs-11 mt-n5">{{ formatTime(item.created_at) }}</p>
-        <p class="ms-5 text-disabled text-end fs-11">{{ formatDate(item.created_at) }}</p>
+        <p class="ms-5 text-disabled fs-12 mt-n5">{{ formatTime(item.created_at) }}</p>
+        <p class="ms-5 text-disabled text-end fs-12">{{ formatDate(item.created_at) }}</p>
       </div>
     </template>
   </v-list>
@@ -90,7 +92,7 @@
   <!-- No Data Template -->
   <div v-else class="text-center mt-5">
     <v-icon size="50" class="mb-2">mdi-alert-circle-outline</v-icon>
-    <p>No appointments matched on your search.</p>
+    <p>No matching appointments found.</p>
   </div>
 </template>
 
@@ -122,7 +124,7 @@ const navDrawitems = ref([
   { icon: 'mdi-bullhorn-variant-outline', text: 'Announcement', routeName: 'Announcement'},
   { icon: 'mdi-doctor', text: 'Doctor', routeName: 'Doctor'},
   { icon: 'mdi-message-text-outline', text: 'Session', routeName: 'Session'},
-  { icon: 'mdi-cog-outline', text: 'Settings',},
+  // { icon: 'mdi-cog-outline', text: 'Settings',},
 ]);
 
 
@@ -196,15 +198,15 @@ const formatDate = (dateTime) => {
     return dayjs(dateTime).format('D MMM');
 };
 
+
 const formatTime = (dateTime) => {
   return dayjs(dateTime).format('h:mm A');
 };
-
 const appointmentData = reactive({
   appointment: null
 });
 
-// const created_at = ref('')
+const created_at = ref('')
 
 const fetchData = async () => {
   try {
@@ -215,6 +217,7 @@ const fetchData = async () => {
       },
     });
     appointmentData.appointment = response.data.data;
+    created_at.value = appointmentData.appointment.created_at
     items.value = [{ type: 'subheader', title: 'Session' }];
     appointmentData.appointment.forEach((appointment) => {
       items.value.push({
@@ -226,6 +229,7 @@ const fetchData = async () => {
       });
       items.value.push({ type: 'divider', inset: true });
     });
+
   } catch (error) {
     console.log(error);
   }
@@ -238,7 +242,7 @@ const highlightText = (text) => {
   if (!search) return text;
   const regex = new RegExp(`(${search})`, 'gi');
   return text.replace(regex, '<span style="background-color: yellow;">$1</span>');
-}
+};
 
 const filteredData = computed(() => {
   if (!appointmentData.appointment) return [];
@@ -256,7 +260,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.fs-11{
-  font-size: 11px;
+.fs-12{
+  font-size: 12px;
 }
 </style>
