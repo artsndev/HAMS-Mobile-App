@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <v-app-bar flat>
@@ -32,7 +31,7 @@
                         <template v-slot:prepend>
                           <v-icon :icon="item.icon"></v-icon>
                         </template>
-                        <v-list-item-title v-text="item.text" style="font-size: medium;" ></v-list-item-title>
+                        <v-list-item-title :text="item.text" style="font-size: medium;" ></v-list-item-title>
                       </v-list-item>
                     </v-list>
                   </v-card>
@@ -61,7 +60,7 @@
           <v-icon :icon="item.icon" size="33"></v-icon>
         </template>
         <router-link :to="{ name: item.routeName }" class="text-dark text-decoration-none">
-          <v-list-item-title v-text="item.text"></v-list-item-title>
+          <v-list-item-title :text="item.text"></v-list-item-title>
         </router-link>
       </v-list-item>
       <v-divider class="mt-5"></v-divider>
@@ -227,7 +226,6 @@ const fetchData = async () => {
       });
       items.value.push({ type: 'divider', inset: true });
     });
-    console.log(created_at)
   } catch (error) {
     console.log(error);
   }
