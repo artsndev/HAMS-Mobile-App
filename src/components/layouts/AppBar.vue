@@ -3,7 +3,7 @@
 <template>
   <v-app-bar flat>
     <v-container>
-      <v-text-field  v-model="searchQuery" variant="outlined" @focus="onFocus" bg-color="blue-grey-lighten-5" placeholder="Search in appointments" color="blue-darken-4" density="comfortable" class="mt-5" rounded>
+      <v-text-field  variant="outlined" @focus="onFocus" bg-color="blue-grey-lighten-5" placeholder="Search in appointments" color="blue-darken-4" density="comfortable" class="mt-5" rounded>
       <template v-slot:prepend-inner>
         <v-app-bar-nav-icon size="30" :ripple="false" @touchstart.prevent="toggleMenu" @mousedown.prevent="toggleMenu" @click="toggleMenu"></v-app-bar-nav-icon>
       </template>
@@ -80,9 +80,6 @@ import { ref, onMounted } from 'vue'
 import axios from 'axios';
 import { useRouter } from 'vue-router'
 import { BASE_URL } from '@/web';
-// import { useAppointmentData } from '@/components/Session.vue';
-
-// const { fetchData, filteredData, searchQuery } = useAppointmentData();
 
 const items = ref([
   { text: 'Sign Out', icon: 'mdi-logout'}
@@ -100,7 +97,6 @@ const toggleMenu = () => {
 }
 
 const navDrawitems = ref([
-  // { icon: 'mdi-home-variant-outline', text: 'Home', routeName: 'Home' },
   { icon: 'mdi-account-outline', text: 'Profile', routeName: 'Profile' },
   { icon: 'mdi-bullhorn-variant-outline', text: 'Announcement', routeName: 'Announcement'},
   { icon: 'mdi-doctor', text: 'Doctor', routeName: 'Doctor'},
