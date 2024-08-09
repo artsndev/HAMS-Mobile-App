@@ -77,7 +77,7 @@
 
   <v-list v-if="filteredData.length" :items="filteredData" lines="two" item-props class="mt-n3">
     <template v-slot:subtitle="{ subtitle, item }">
-      <router-link :to="'/session/info/' + item.id" class="text-decoration-none text-dark">
+      <router-link :to="'/doctor/profile/' + item.id" class="text-decoration-none text-dark">
         <div v-html="highlightText(subtitle)"></div>
       </router-link>
     </template>
