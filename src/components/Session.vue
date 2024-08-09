@@ -198,7 +198,7 @@ const formatDate = (dateTime) => {
 };
 
 const formatTime = (dateTime) => {
-  return dayjs(dateTime).format('hh:mm A');
+  return dayjs(dateTime).format('h:mm A');
 };
 
 const appointmentData = reactive({
