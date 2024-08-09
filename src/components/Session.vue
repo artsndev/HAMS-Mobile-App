@@ -238,7 +238,7 @@ const highlightText = (text) => {
   if (!search) return text;
   const regex = new RegExp(`(${search})`, 'gi');
   return text.replace(regex, '<span style="background-color: yellow;">$1</span>');
-};
+}
 
 const filteredData = computed(() => {
   if (!appointmentData.appointment) return [];
