@@ -64,6 +64,7 @@
               <div class=" mb-4">Invite collaborators to your network and grow your connections.</div>
               <v-form @submit.prevent="createAppointment">
                 <v-text-field v-model="form.doctor_id" class="d-none"  label="Hello"></v-text-field>
+                <v-text-field v-model="form.schedule_id" class="d-none"  label="Hello"></v-text-field>
                 <v-select class="mb-2" :error-messages="appointment_error" color="primary" v-model="form.appointment_time" density="compact" clearable chips label="Select a schedule" :items="scheduleItem" variant="outlined" ></v-select>
                 <v-select class="mb-2" :error-messages="appointment_session_error" v-model="form.session_of_appointment" color="primary" variant="outlined" density="compact" :items="items" label="Select a Session of appointment" multiple>
                   <template v-slot:selection="{ item, index }">
@@ -105,6 +106,7 @@ const phone_number = ref('')
 const specialization = ref('')
 
 const doctorId = ref(null)
+const schedId = ref(null)
 
 const router = useRouter()
 
@@ -128,13 +130,16 @@ const loadUser = async () => {
     address.value = doctor.address
     birthdate.value = doctor.birthdate
     phone_number.value = doctor.phone_number
+    schedId.value = doctor.schedule
     specialization.value = doctor.specialization
     if (Array.isArray(doctor.schedule)) {
+      schedId.value = doctor.schedule.map(sch => sch.id);
       scheduleItem.value = doctor.schedule.flatMap(sch => {
         const scheduleTimes = Array.isArray(sch.schedule_time) ? sch.schedule_time : sch.schedule_time.split(',')
         return scheduleTimes.map(time => formatDate(time))
       });
     }
+    console.log(schedId.value)
   } catch (error) {
     if (error.response.status === 401) {
       localStorage.removeItem('userToken');
@@ -150,6 +155,7 @@ const loadUser = async () => {
 
 const form = reactive({
   doctor_id: doctorId,
+  schedule_id: schedId,
   appointment_time: null,
   purpose_of_appointment: '',
   session_of_appointment: [],
@@ -188,6 +194,7 @@ const createAppointment = async () => {
   try {
     const formData = new FormData();
     formData.append('doctor_id', form.doctor_id);
+    formData.append('schedule_id', form.schedule_id);
     formData.append('appointment_time', formattedDate(form.appointment_time));
     formData.append('purpose_of_appointment', form.purpose_of_appointment);
     formData.append('session_of_appointment', form.session_of_appointment.join(', '));
