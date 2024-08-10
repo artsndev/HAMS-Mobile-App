@@ -3,7 +3,7 @@
 <template>
   <v-app-bar flat>
     <v-container>
-      <v-text-field v-model="searchQuery" variant="outlined" @focus="onFocus" bg-color="blue-grey-lighten-5" placeholder="Search in appointments history" color="blue-darken-4" density="comfortable" class="mt-5" rounded>
+      <v-text-field v-model="searchQuery" variant="outlined" @focus="onFocus" bg-color="blue-grey-lighten-5" placeholder="Search for a doctor" color="blue-darken-4" density="comfortable" class="mt-5" rounded>
         <template v-slot:prepend-inner>
           <v-app-bar-nav-icon size="30" :ripple="false" @touchstart.prevent="toggleMenu" @mousedown.prevent="toggleMenu" @click="toggleMenu"></v-app-bar-nav-icon>
         </template>

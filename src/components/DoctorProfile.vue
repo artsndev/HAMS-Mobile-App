@@ -158,13 +158,6 @@ const items = ref(['Website', 'Web Application', 'Mobile App', 'Web Design', 'Cl
 
 const text = ref('Submitted Successfully!')
 
-const initialFormState = {
-  doctor_id: doctorId,
-  appointment_time: null,
-  purpose_of_appointment: '',
-  session_of_appointment: [],
-};
-
 const formattedDate = (date) => {
     if (!date) return '';
     const d = new Date(date);
@@ -240,7 +233,9 @@ const createAppointment = async () => {
       snackbar.value = true
       addAppointment.value = false
       scheduleItem.value = scheduleItem.value.filter(time => time !== formatDate(form.appointment_time));
-      Object.assign(form.value, initialFormState);
+      router.push({
+        name: 'Session'
+      })
     } else {
       if (response.data.errors) {
         setValidationError();

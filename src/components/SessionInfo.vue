@@ -17,18 +17,31 @@
   <!-- <v-divider></v-divider> -->
   <p class="fs-10 mb-5 ms-5 mt-n5">Request Status</p>
   <div height="100">
-    <v-timeline align="start" side="end" truncate-line="both">
-      <v-timeline-item dot-color="success" size="20" >
+    <v-timeline align="start" side="end" truncate-line="both" >
+      <v-timeline-item dot-color="success" size="20" v-if="deleted_at">
         <template v-slot:opposite>
           <div class="flex">
-            <p class="ms-5 fs-12">{{ formatDate(created_at) }}</p>
-            <p class="ms-5 fs-12">{{ formatTime(created_at) }}</p>
+            <p class="ms-5 fs-12">{{ formatDate(deleted_at) }}</p>
+            <p class="ms-5 fs-12">{{ formatTime(deleted_at) }}</p>
           </div>
         </template>
         <v-container class="ms-n7 mt-n5">
-          <strong>Completed</strong>
+          <strong>Queued</strong>
           <div class="text-caption text-wrap">
-            Your appointment request is completed.
+            Your appointment request is accepted and queued.
+          </div>
+        </v-container>
+      </v-timeline-item>
+      <v-timeline-item dot-color="warning" size="20" v-else>
+        <template v-slot:opposite>
+          <div class="flex">
+            <p class="ms-5 fs-12">On Queue</p>
+          </div>
+        </template>
+        <v-container class="ms-n7 mt-n5">
+          <strong>Queuing</strong>
+          <div class="text-caption text-wrap">
+            Your appointment request is waiting to be queued.
           </div>
         </v-container>
       </v-timeline-item>
@@ -64,6 +77,8 @@ const purpose_of_appointment = ref('')
 const session_of_appointment = ref('')
 const appointment_time = ref('')
 const created_at = ref('')
+const deleted_at = ref('')
+
 
 const appointmentId = ref(null)
 
@@ -93,6 +108,7 @@ const loadData = async () => {
     purpose_of_appointment.value = appointment.purpose_of_appointment
     session_of_appointment.value = appointment.session_of_appointment
     created_at.value = appointment.created_at
+    deleted_at.value = appointment.deleted_at
     // console.log(name)
   } catch (error) {
     console.log(error)
