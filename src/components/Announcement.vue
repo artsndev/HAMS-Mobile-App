@@ -1,79 +1,55 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <AppBar/>
-    <v-list :items="items" lines="two" item-props class="mt-n3">
-      <template v-slot:subtitle="{ subtitle }" >
-        <div v-html="subtitle"></div>
-      </template>
-    </v-list>
-  <BottomBar/>
+  <v-container>
+    <v-card rounded="xl" class="mb-5" elevation="5">
+      <v-img height="150" src="https://cdn.vuetifyjs.com/images/cards/cooking.png" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" cover></v-img>
+      <v-row class="mx-1 mt-1">
+        <v-col cols="7">
+          <v-chip  size="x-small" color="grey-darken-3 text-uppercase" >
+            Announcement
+          </v-chip>
+        </v-col>
+        <v-col cols="5" class="mt-1">
+          <p class="fs-14">21/10/2023 11:21 PM</p>
+        </v-col>
+      </v-row>
+      <v-card-title class="text-wrap fs-20">Make a donation today with a quick scan!</v-card-title>
+      <v-card-text>
+        <p class="text-grey-darken-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, recusandae.</p>
+      </v-card-text>
+    </v-card>
+    <v-card rounded="xl" elevation="5">
+      <!-- <v-img height="150" src="https://cdn.vuetifyjs.com/images/cards/cooking.png" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" cover></v-img> -->
+      <v-row class="mx-1 mt-1" >
+        <v-col cols="7">
+          <v-chip  size="x-small" color="grey-darken-3 text-uppercase" >
+            Announcement
+          </v-chip>
+        </v-col>
+        <v-col cols="5" class="mt-1">
+          <p class="fs-14">21/10/2023 11:21 PM</p>
+        </v-col>
+      </v-row>
+      <v-card-title class="text-wrap fs-20">Make a donation today with a quick scan!</v-card-title>
+      <v-card-text>
+        <p class="text-grey-darken-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, recusandae.</p>
+      </v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script setup>
 import AppBar from './layouts/AppBar.vue';
-import BottomBar from './layouts/BottomBar.vue';
-import { ref } from 'vue'
+// import { ref } from 'vue'
 
-const items = ref([
-  { type: 'subheader', title: 'Announcement' },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-    title: 'Test 1',
-    subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, fugiat?',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-    title: 'Test 2',
-    subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, fugiat?',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-    title: 'Test 3',
-    subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, fugiat?',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-    title: 'Test 4',
-    subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, fugiat?',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-    title: 'Test 5',
-    subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, fugiat?',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-    title: 'Test 6',
-    subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, fugiat?',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-    title: 'Test 7',
-    subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, fugiat?',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-    title: 'Test 8',
-    subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, fugiat?',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-    title: 'Test 9',
-    subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, fugiat?',
-  },
-  { type: 'divider', inset: true },
-  {
-    prependAvatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-    title: 'Test 10',
-    subtitle: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, fugiat?',
-  },
-])
 </script>
+
+<style scoped>
+.fs-18{
+  font-size: 18px;
+}
+.fs-14{
+  font-size: 12px;
+}
+</style>

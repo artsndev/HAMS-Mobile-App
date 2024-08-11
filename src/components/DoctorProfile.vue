@@ -142,9 +142,10 @@ const loadUser = async () => {
     console.log(schedId.value)
   } catch (error) {
     if (error.response.status === 401) {
-      localStorage.removeItem('userToken');
+      location.reload()
+        localStorage.removeItem('userToken');
       setTimeout(() => {
-        location.reload()
+
         router.push({
           name: 'Login'
         })
