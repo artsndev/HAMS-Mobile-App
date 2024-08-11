@@ -85,9 +85,9 @@
       </v-dialog>
     </v-footer>
     <v-snackbar :timeout="2000" v-model="snackbar" color="success">
-    <v-icon icon="mdi-check" class="px-2"></v-icon>
-      {{ text }}
-  </v-snackbar>
+      <v-icon icon="mdi-check" class="px-2"></v-icon>
+        {{ text }}
+    </v-snackbar>
 </template>
 
 <script setup>
