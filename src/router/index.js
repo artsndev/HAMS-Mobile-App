@@ -5,7 +5,7 @@ const routes = [
   {
     path: '/',
     redirect: {
-      name: 'Home',
+      name: 'Announcement',
     }
   },
   {
@@ -25,9 +25,9 @@ const routes = [
     }
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: () => import('../components/Home.vue'),
+    path: '/announcement',
+    name: 'Announcement',
+    component: () => import('../components/Announcement.vue'),
     meta: {
       requiresUserAuth: true,
     }
@@ -52,14 +52,6 @@ const routes = [
     path: '/session/info/:id',
     name: 'Session Info',
     component: () => import('../components/SessionInfo.vue'),
-    meta: {
-      requiresUserAuth: true,
-    }
-  },
-  {
-    path: '/announcement',
-    name: 'Announcement',
-    component: () => import('../components/Announcement.vue'),
     meta: {
       requiresUserAuth: true,
     }

@@ -85,9 +85,9 @@
       </v-dialog>
     </v-footer>
     <v-snackbar :timeout="2000" v-model="snackbar" color="success">
-    <v-icon icon="mdi-check" class="px-2"></v-icon>
-      {{ text }}
-  </v-snackbar>
+      <v-icon icon="mdi-check" class="px-2"></v-icon>
+        {{ text }}
+    </v-snackbar>
 </template>
 
 <script setup>
@@ -142,9 +142,9 @@ const loadUser = async () => {
     console.log(schedId.value)
   } catch (error) {
     if (error.response.status === 401) {
-      localStorage.removeItem('userToken');
+      location.reload()
+        localStorage.removeItem('userToken');
       setTimeout(() => {
-        location.reload()
         router.push({
           name: 'Login'
         })
