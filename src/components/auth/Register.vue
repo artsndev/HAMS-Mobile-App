@@ -128,7 +128,7 @@ const register = async () => {
     }
     if(response.data.success){
       localStorage.setItem('userToken', response.data.data.userToken);
-      router.push('/home');
+      router.push('/announcement');
     } else {
       if (response.data.errors) {
         setValidationError();
