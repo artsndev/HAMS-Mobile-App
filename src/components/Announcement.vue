@@ -30,6 +30,7 @@ import AppBar from './layouts/AppBar.vue';
 import { onMounted, ref } from 'vue'
 import { BASE_URL } from '@/web';
 import dayjs from 'dayjs';
+import { onUnmounted } from 'vue';
 
 const data = ref([])
 
@@ -52,7 +53,12 @@ const formatDate = (dateTime) => {
 };
 
 onMounted(() => {
-  fetchData()
+  const intervalId = setInterval(() => {
+    fetchData()
+  }, 5000);
+  onUnmounted(() => {
+    clearInterval(intervalId);
+  });
 })
 
 </script>
