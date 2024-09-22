@@ -10,19 +10,19 @@
       <p class="mx-auto text-grey font-weight-regular">{{ specialization }}</p>
     </div>
   </v-container>
-  <v-container>
+  <!-- <v-container>
     <v-row no-gutters>
       <v-col cols="6">
         <v-card-title class="text-center mt-n3">21</v-card-title>
         <v-card-subtitle class="text-center text-caption mt-n3">Pending</v-card-subtitle>
       </v-col>
-      <!-- <v-divider vertical inset></v-divider> -->
+      <v-divider vertical inset></v-divider>
       <v-col cols="6">
         <v-card-title class="text-center mt-n3">10</v-card-title>
         <v-card-subtitle class="text-center text-caption mt-n3">Completed</v-card-subtitle>
       </v-col>
     </v-row>
-  </v-container>
+  </v-container> -->
   <!-- <v-divider></v-divider> -->
     <v-list  nav>
       <v-list-item>

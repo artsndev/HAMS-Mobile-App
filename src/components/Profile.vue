@@ -8,19 +8,24 @@
       </v-avatar>
       <h2 class="mx-auto font-weight-regular mt-3">{{ name }}</h2>
       <p class="mx-auto text-grey font-weight-regular">{{ email }}</p>
-      <v-btn prepend-icon="mdi-pencil-outline" color="dark" variant="outlined" class="mt-3 text-capitalize">Edit Profile</v-btn>
+      <!-- <v-btn prepend-icon="mdi-pencil-outline" color="dark" variant="outlined" class="mt-3 text-capitalize">Edit Profile</v-btn> -->
     </div>
   </v-container>
   <v-container>
     <v-row no-gutters>
-      <v-col cols="6">
-        <v-card-title class="text-center mt-n3">21</v-card-title>
-        <v-card-subtitle class="text-center text-caption mt-n3">Appointments</v-card-subtitle>
+      <v-col cols="4">
+        <v-card-title class="text-center mt-n3">{{ pending_appointments }}</v-card-title>
+        <v-card-subtitle class="text-center text-caption mt-n3">Pending</v-card-subtitle>
       </v-col>
       <v-divider vertical inset></v-divider>
-      <v-col cols="6">
-        <v-card-title class="text-center mt-n3">10</v-card-title>
-        <v-card-subtitle class="text-center text-caption mt-n3">Pending</v-card-subtitle>
+      <v-col cols="4">
+        <v-card-title class="text-center mt-n3">{{ processing_appointments }}</v-card-title>
+        <v-card-subtitle class="text-center text-caption mt-n3">On Process</v-card-subtitle>
+      </v-col>
+      <v-divider vertical inset></v-divider>
+      <v-col cols="4">
+        <v-card-title class="text-center mt-n3">{{ completed_appointments }}</v-card-title>
+        <v-card-subtitle class="text-center text-caption mt-n3">Completed</v-card-subtitle>
       </v-col>
     </v-row>
   </v-container>
@@ -89,7 +94,28 @@ const loadUser = async () => {
   }
 }
 
+const pending_appointments = ref('')
+const processing_appointments = ref('')
+const completed_appointments = ref('')
+
+const countData = async () => {
+  try {
+    const token = localStorage.getItem('userToken')
+    const response = await axios.get(BASE_URL + '/count', {
+      headers : {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    pending_appointments.value = response.data.pending_appointments
+    processing_appointments.value = response.data.processing_appointments
+    completed_appointments.value = response.data.completed_appointments
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 onMounted(() => {
+  countData()
   loadUser()
 })
 </script>
