@@ -160,7 +160,7 @@ const form = reactive({
   purpose_of_appointment: '',
   session_of_appointment: [],
 })
-const items = ref(['Website', 'Web Application', 'Mobile App', 'Web Design', 'Cloud Hosting', 'API Development']);
+const items = ref(['Pre-Natal', 'Vaccine']);
 
 const text = ref('Submitted Successfully!')
 
