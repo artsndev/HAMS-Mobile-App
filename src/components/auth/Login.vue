@@ -3,6 +3,12 @@
   <v-container class="fill-height" >
     <v-row align="center" justify="center" class="min-vh-100 px-2" >
       <v-col cols="12" sm="8" md="8" lg="4" xl="3" xxl="4">
+        <div class="text-center">
+          <!-- Image Section -->
+          <img src="@/assets/images/logo.png"  alt="avatar" class="mb-1" height="165" width="165">
+        </div>
+      </v-col>
+      <v-col cols="12" sm="8" md="8" lg="4" xl="3" xxl="4">
         <div class="container" color="primary">
           <v-alert v-if="error" icon="mdi-alert"  variant="tonal" class="mb-5"  color="red-darken-4">
             {{ error }}

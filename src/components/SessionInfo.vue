@@ -40,7 +40,7 @@
           </div>
         </template>
         <v-container class="ms-n7 mt-n5">
-          <strong>Queued</strong>
+          <strong>On Proccess</strong>
           <div class="text-caption text-wrap">
             Your appointment request is accepted and queued.
           </div>
