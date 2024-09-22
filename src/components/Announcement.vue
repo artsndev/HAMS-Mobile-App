@@ -2,7 +2,7 @@
 <template>
   <AppBar/>
   <v-container>
-    <v-card rounded="xl" class="mb-5" elevation="0" v-for="(item, index) in data" :key="index">
+    <v-card rounded="xl" color="grey-lighten-4" class="mb-5" elevation="0" v-for="(item, index) in data" :key="index">
       <!-- <v-img height="150" src="https://cdn.vuetifyjs.com/images/cards/cooking.png" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" cover></v-img> -->
       <v-row class="mx-1 mt-1">
         <v-col cols="6">
@@ -30,6 +30,7 @@ import AppBar from './layouts/AppBar.vue';
 import { onMounted, ref } from 'vue'
 import { BASE_URL } from '@/web';
 import dayjs from 'dayjs';
+import { onUnmounted } from 'vue';
 
 const data = ref([])
 
@@ -52,7 +53,12 @@ const formatDate = (dateTime) => {
 };
 
 onMounted(() => {
-  fetchData()
+  const intervalId = setInterval(() => {
+    fetchData()
+  }, 5000);
+  onUnmounted(() => {
+    clearInterval(intervalId);
+  });
 })
 
 </script>
